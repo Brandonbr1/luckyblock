@@ -1,7 +1,8 @@
 version = '1.16.4-3'
 ext {
-    forge_version = '35.1.37'
-    mc_version = '1.16.4'
+    forge_version = '36.1.23'
+    mc_version = '1.16.5'
+    //mapping_version = '1.16.5'
     mapping_version = '20201028-1.16.3'
     jarname_dev = 'luckyblock-build'
     jarname_prd = "luckyblock-$version"
@@ -14,7 +15,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
         classpath 'org.ajoberstar.grgit:grgit-gradle:4.0.2'
     }
 }
@@ -24,11 +25,10 @@ apply plugin: 'org.ajoberstar.grgit'
 group = 'mod.lucky'
 archivesBaseName = 'lucky'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 minecraft {
     mappings channel: 'snapshot', version: "${project.mapping_version}"
-    
     runs {
         client {
             workingDirectory project.file('run')
